@@ -34,11 +34,14 @@ public class ProjectMenu extends JMenu {
   private final PrintAction myPrintAction;
   private OpenProjectAction myOpenProjectAction;
 
+  private CalendarTest myCalendarAction;
+
   public ProjectMenu(final GanttProject project, JMenu mru, String key) {
     super(GPAction.createVoidAction(key));
     myNewProjectAction = new NewProjectAction(project);
     mySaveProjectAction = new SaveProjectAction(project);
     myPrintAction = new PrintAction(project);
+    myCalendarAction = new CalendarTest(project.getProject(), project.getProjectUIFacade());
 
     ProjectPropertiesAction projectSettingsAction = new ProjectPropertiesAction(project);
     myOpenProjectAction = new OpenProjectAction(project.getProject(), project.getProjectUIFacade());
@@ -55,6 +58,7 @@ public class ProjectMenu extends JMenu {
     add(projectSettingsAction);
     add(myNewProjectAction);
     add(myOpenProjectAction);
+    add(myCalendarAction);
     add(mru);
 
     addSeparator();
@@ -100,5 +104,7 @@ public class ProjectMenu extends JMenu {
   public OpenProjectAction getOpenProjectAction() {
     return myOpenProjectAction;
   }
+
+  public CalendarTest getMyCalendarAction() {return myCalendarAction;}
 
 }
