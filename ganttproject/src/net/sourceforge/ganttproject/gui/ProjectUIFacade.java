@@ -31,6 +31,8 @@ public interface ProjectUIFacade {
 
   void saveProjectAs(IGanttProject project);
 
+  void saveProjectToGDrive(IGanttProject project);
+
   public boolean ensureProjectSaved(IGanttProject project);
 
   void openProject(IGanttProject project) throws IOException, DocumentException;

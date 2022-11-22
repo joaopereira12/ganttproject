@@ -23,7 +23,7 @@ import net.sourceforge.ganttproject.action.GPAction;
 
 import java.awt.event.ActionEvent;
 
-class SaveProjectAsAction extends GPAction {
+class SaveProjectToGDrive extends GPAction {
     private GanttProject myMainFrame;
 
     SaveProjectAsAction(GanttProject mainFrame) {
