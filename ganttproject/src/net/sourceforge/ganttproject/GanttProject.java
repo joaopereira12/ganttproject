@@ -822,6 +822,17 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     getProjectUIFacade().saveProject(getProject());
   }
 
+  public void saveProjectToGDrive() {
+    getProjectUIFacade().saveProjectToGDrive(getProject());
+  }
+
+  public void openProjectFromGDrive() {
+    try {
+      getProjectUIFacade().openProjectFromGDrive(getProject());
+    }catch (Exception exception){}
+
+  }
+
   public void changeWorkingDirectory(String newWorkDir) {
     if (null != newWorkDir) {
       options.setWorkingDirectory(newWorkDir);

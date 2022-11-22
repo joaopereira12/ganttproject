@@ -23,17 +23,17 @@ import net.sourceforge.ganttproject.action.GPAction;
 
 import java.awt.event.ActionEvent;
 
-class SaveProjectToGDrive extends GPAction {
+class SaveProjectToGDriveAction extends GPAction {
     private GanttProject myMainFrame;
 
-    SaveProjectAsAction(GanttProject mainFrame) {
-        super("project.saveas");
+    SaveProjectToGDriveAction(GanttProject mainFrame) {
+        super("project.saveGoogle");
         myMainFrame = mainFrame;
     }
 
     @Override
     protected String getIconFilePrefix() {
-        return "saveas_";
+        return "send_mail_";
     }
 
     @Override
@@ -41,6 +41,6 @@ class SaveProjectToGDrive extends GPAction {
         if (calledFromAppleScreenMenu(e)) {
             return;
         }
-        myMainFrame.saveAsProject();
+        myMainFrame.saveProjectToGDrive();
     }
 }

@@ -33,6 +33,9 @@ import net.sourceforge.ganttproject.undo.GPUndoManager;
 import net.sourceforge.ganttproject.util.FileUtil;
 import org.eclipse.core.runtime.IStatus;
 
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.awt.event.ActionEvent;
@@ -188,50 +191,31 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
 
   @Override
   public void saveProjectToGDrive(IGanttProject project) {
-    /*
-     * if (project.getDocument() instanceof AbstractURLDocument) {
-     * saveProjectRemotely(project); return; }
-     */
+    try {
+      GoogleAPI google = new GoogleAPI();
+    }catch (Exception e){}
+
+  }
+
+  @Override
+  public void openProjectFromGDrive(final IGanttProject project) throws IOException, DocumentException {
+    if (false == ensureProjectSaved(project)) {
+      return;
+    }
     JFileChooser fc = new JFileChooser(myDocumentManager.getWorkingDirectory());
     FileFilter ganttFilter = new GanttXMLFileFilter();
-    fc.addChoosableFileFilter(ganttFilter);
 
     // Remove the possibility to use a file filter for all files
     FileFilter[] filefilters = fc.getChoosableFileFilters();
     for (int i = 0; i < filefilters.length; i++) {
-      if (filefilters[i] != ganttFilter) {
-        fc.removeChoosableFileFilter(filefilters[i]);
-      }
+      fc.removeChoosableFileFilter(filefilters[i]);
     }
+    fc.addChoosableFileFilter(ganttFilter);
 
-    try {
-      for (;;) {
-        int userChoice = fc.showSaveDialog(myWorkbenchFacade.getMainFrame());
-        if (userChoice != JFileChooser.APPROVE_OPTION) {
-          break;
-        }
-        File projectfile = fc.getSelectedFile();
-        String extension = FileUtil.getExtension(projectfile).toLowerCase();
-        if (!"gan".equals(extension) && !"xml".equals(extension)) {
-          projectfile = FileUtil.appendExtension(projectfile, "gan");
-        }
-
-        if (projectfile.exists()) {
-          UIFacade.Choice overwritingChoice = myWorkbenchFacade.showConfirmationDialog(
-                  projectfile + "\n" + i18n.getText("msg18"), i18n.getText("warning"));
-          if (overwritingChoice != UIFacade.Choice.YES) {
-            continue;
-          }
-        }
-
-        Document document = myDocumentManager.getDocument(projectfile.getAbsolutePath());
-        saveProject(document);
-        project.setDocument(document);
-        afterSaveProject(project);
-        break;
-      }
-    } catch (Throwable e) {
-      myWorkbenchFacade.showErrorDialog(e);
+    int returnVal = fc.showOpenDialog(myWorkbenchFacade.getMainFrame());
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+      Document document = getDocumentManager().getDocument(fc.getSelectedFile().getAbsolutePath());
+      openProject(document, project);
     }
   }
 
