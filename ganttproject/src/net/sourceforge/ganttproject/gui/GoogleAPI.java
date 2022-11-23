@@ -14,8 +14,6 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.FileList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,7 +54,7 @@ public class GoogleAPI {
      */
 
     public GoogleAPI() throws IOException, GeneralSecurityException {
-
+        System.out.println("ALELUIA!");
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
@@ -81,6 +79,7 @@ public class GoogleAPI {
     }
 
     public static void upload() throws IOException, GeneralSecurityException {
+       /* 
         // Build a new authorized API client service.
         NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 
@@ -105,7 +104,7 @@ public class GoogleAPI {
             // TODO(developer) - handle error appropriately
             System.err.println("Unable to upload file: " + e.getDetails());
             throw e;
-        }
+        }*/
         /*
         Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
