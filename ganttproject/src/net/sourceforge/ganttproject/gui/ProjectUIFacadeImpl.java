@@ -197,6 +197,33 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
 
   }
 
+
+
+
+
+
+
+  @Override
+  public void listEvents(IGanttProject project){
+    try {
+      GoogleCalendar calendar = new GoogleCalendar();
+      System.out.println("Pleaseeeee");
+      calendar.listEvents();
+      //GoogleCalendarExtern calendar = new GoogleCalendarExtern();
+      //calendar.printCat();
+    }catch (Exception e){}
+  }
+
+
+
+
+
+
+
+
+
+
+
   @Override
   public void openProjectFromGDrive(final IGanttProject project) throws IOException, DocumentException {
     if (false == ensureProjectSaved(project)) {
@@ -217,6 +244,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
       Document document = getDocumentManager().getDocument(fc.getSelectedFile().getAbsolutePath());
       openProject(document, project);
     }
+
   }
 
   /**
