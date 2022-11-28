@@ -14,6 +14,8 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
+import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.FileList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,7 +45,7 @@ public class GoogleAPI {
      */
     private static final List<String> SCOPES =
             Collections.singletonList(DriveScopes.DRIVE);
-    private static final String CREDENTIALS_FILE_PATH = "client_secret.json";
+    private static final String CREDENTIALS_FILE_PATH = "/home/duartecruz/Documents/FCT/ES/GoogleDriveTest/src/main/resources/client_secret.json";
 
     /**
      * Creates an authorized Credential object.
@@ -54,7 +56,32 @@ public class GoogleAPI {
      */
 
     public GoogleAPI() throws IOException, GeneralSecurityException {
-        System.out.println("ALELUIA!");
+        System.out.println("HEYYYYYY");
+        // Build a new authorized API client service.
+        NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+
+        // Build a new authorized API client service.
+        Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+
+        // Upload file photo.jpg on drive.
+        File fileMetadata = new File();
+        fileMetadata.setName("test.rpm");
+        // File's content.
+        java.io.File filePath = new java.io.File("/home/duartecruz/Downloads/VirtualBox-7.0-7.0.2_154219_fedora36-1.x86_64.rpm");
+        // Specify media type and file-path for file.
+        FileContent mediaContent = new FileContent("application/x-rpm", filePath);
+        try {
+            File file = service.files().create(fileMetadata, mediaContent)
+                    .setFields("id")
+                    .execute();
+            System.out.println("File ID: " + file.getId());
+        } catch (GoogleJsonResponseException e) {
+            // TODO(developer) - handle error appropriately
+            System.err.println("Unable to upload file: " + e.getDetails());
+            throw e;
+        }
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {

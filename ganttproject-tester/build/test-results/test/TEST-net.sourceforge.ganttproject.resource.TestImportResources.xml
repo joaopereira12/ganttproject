@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.resource.TestImportResources" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:09" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.006">
+  <properties/>
+  <testcase name="testMergeByID" classname="net.sourceforge.ganttproject.resource.TestImportResources" time="0.004"/>
+  <testcase name="testMergeResourcesByName" classname="net.sourceforge.ganttproject.resource.TestImportResources" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[[HumanResource] getRole(): I have no role :( name=jack
+[HumanResource] getRole(): I have no role :( name=joe
+[HumanResource] getRole(): I have no role :( name=joe
+[HumanResource] getRole(): I have no role :( name=jack
+]]></system-err>
+</testsuite>

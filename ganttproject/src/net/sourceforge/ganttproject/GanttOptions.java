@@ -1123,13 +1123,16 @@ public class GanttOptions extends SaverBase {
   public void addOptions(GPOptionGroup optionGroup) {
     GPOption[] options = optionGroup.getOptions();
     for (int i = 0; i < options.length; i++) {
-      GPOption nextOption = options[i];
-      myGPOptions.put(optionGroup.getID() + "." + nextOption.getID(), nextOption);
-      if (nextOption instanceof GP1XOptionConverter) {
-        GP1XOptionConverter nextConverter = (GP1XOptionConverter) nextOption;
-        myTagDotAttribute_Converter.put(nextConverter.getTagName() + "." + nextConverter.getAttributeName(),
-            nextConverter);
-      }
+      try {
+        GPOption nextOption = options[i];
+        myGPOptions.put(optionGroup.getID() + "." + nextOption.getID(), nextOption);
+        if (nextOption instanceof GP1XOptionConverter) {
+          GP1XOptionConverter nextConverter = (GP1XOptionConverter) nextOption;
+          myTagDotAttribute_Converter.put(nextConverter.getTagName() + "." + nextConverter.getAttributeName(),
+                  nextConverter);
+        }
+      }catch (Exception es){}
+
     }
   }
 

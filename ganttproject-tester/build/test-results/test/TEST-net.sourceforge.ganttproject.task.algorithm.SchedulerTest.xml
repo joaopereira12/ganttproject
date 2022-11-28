@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:09" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.872">
+  <properties/>
+  <testcase name="testSimpleChain" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.076"/>
+  <testcase name="testEarliestStartLaterThanStartDate" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.026"/>
+  <testcase name="testIncomingFork" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.117"/>
+  <testcase name="testRubberDependency" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.085"/>
+  <testcase name="test_issue830" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.107"/>
+  <testcase name="testTailHolidayTimeIsIgnored" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.13"/>
+  <testcase name="testChainOfSubtasks" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.064"/>
+  <testcase name="testInheritedDependenciesAreWeak" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.065"/>
+  <testcase name="testRhombus" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.074"/>
+  <testcase name="testRubberFS_StrongFF" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.048"/>
+  <testcase name="testEarliestStartEarlierLosesToDependency" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.031"/>
+  <testcase name="testEarliestStartEarlierThanStartDate" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.016"/>
+  <testcase name="testEarliestStartLaterWinsToDependency" classname="net.sourceforge.ganttproject.task.algorithm.SchedulerTest" time="0.032"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

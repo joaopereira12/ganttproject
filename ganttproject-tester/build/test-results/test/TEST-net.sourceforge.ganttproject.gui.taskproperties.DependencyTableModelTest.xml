@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.gui.taskproperties.DependencyTableModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:09" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.013">
+  <properties/>
+  <testcase name="testEmptyModel" classname="net.sourceforge.ganttproject.gui.taskproperties.DependencyTableModelTest" time="0.004"/>
+  <testcase name="testBasicDependencyAdd" classname="net.sourceforge.ganttproject.gui.taskproperties.DependencyTableModelTest" time="0.005"/>
+  <testcase name="testSubsequentDependeeChange_Issue1618" classname="net.sourceforge.ganttproject.gui.taskproperties.DependencyTableModelTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

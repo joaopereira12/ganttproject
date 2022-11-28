@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.resource.LoadDistributionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:09" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.029">
+  <properties/>
+  <testcase name="testSingleTaskNoWeekendDistribution" classname="net.sourceforge.ganttproject.resource.LoadDistributionTest" time="0.026"/>
+  <testcase name="testEmptyLoadDistribution" classname="net.sourceforge.ganttproject.resource.LoadDistributionTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -33,13 +33,13 @@ import net.sourceforge.ganttproject.gui.NotificationItem;
 import net.sourceforge.ganttproject.gui.NotificationManager;
 import net.sourceforge.ganttproject.gui.UIFacade;
 import net.sourceforge.ganttproject.language.GanttLanguage;
-
+/*
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-
+*/
 import biz.ganttproject.core.option.ChangeValueEvent;
 import biz.ganttproject.core.option.ChangeValueListener;
 import biz.ganttproject.core.option.DateOption;
@@ -55,6 +55,7 @@ import biz.ganttproject.core.time.impl.GPTimeUnitStack;
  * @author dbarashev (Dmitry Barashev)
  */
 public class RssFeedChecker {
+
   private static enum CheckOption {
     YES, NO, UNDEFINED
   }
@@ -129,6 +130,7 @@ public class RssFeedChecker {
   }
 
   public void run() {
+
     Runnable command = null;
     CheckOption checkOption = CheckOption.valueOf(myCheckRssOption.getValue());
     if (CheckOption.NO == checkOption) {
@@ -178,26 +180,24 @@ public class RssFeedChecker {
       @Override
       public void run() {
         GPLogger.log("Starting RSS check...");
-        HttpClient httpClient = new DefaultHttpClient();
+        //HttpClient httpClient = new DefaultHttpClient();
         String url = RSS_URL;
         try {
           for (int i = 0; i < MAX_ATTEMPTS; i++) {
-            HttpGet getRssUrl = new HttpGet(url);
-            getRssUrl.addHeader("User-Agent", "GanttProject " + GPVersion.CURRENT);
-            HttpResponse result = httpClient.execute(getRssUrl);
+            //HttpGet getRssUrl = new HttpGet(url);
+            //getRssUrl.addHeader("User-Agent", "GanttProject " + GPVersion.CURRENT);
+            //HttpResponse result = httpClient.execute(getRssUrl);
 
-            switch (result.getStatusLine().getStatusCode()) {
-            case HttpStatus.SC_OK:
-              processResponse(result.getEntity().getContent());
-              return;
-            }
+            //switch (result.getStatusLine().getStatusCode()) {
+            //case HttpStatus.SC_OK:
+            //  processResponse(result.getEntity().getContent());
+            //  return;
+            //}
           }
-        } catch (MalformedURLException e) {
+        } catch (Exception e) {
           e.printStackTrace();
-        } catch (IOException e) {
-          e.printStackTrace();
-        } finally {
-          httpClient.getConnectionManager().shutdown();
+        }finally {
+          //httpClient.getConnectionManager().shutdown();
           GPLogger.log("RSS check finished");
         }
       }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:08" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.044">
+  <properties/>
+  <testcase name="testIndentSubtreeRoots" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.013"/>
+  <testcase name="testOudentFromDifferentSources" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.006"/>
+  <testcase name="testSimpleOutdent" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.002"/>
+  <testcase name="testIndentWholeSubtrees" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.003"/>
+  <testcase name="testSimpleIndent" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.002"/>
+  <testcase name="testOutdentSubtreeRoots" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.006"/>
+  <testcase name="testIndentIntoDifferentTargets" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.004"/>
+  <testcase name="testOutdentWholeSubtrees" classname="net.sourceforge.ganttproject.test.task.hierarchy.TestTaskIndentOutdent" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

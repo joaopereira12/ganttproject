@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:08" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.057">
+  <properties/>
+  <testcase name="testCopyDates" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.01"/>
+  <testcase name="testTruncateExternalDependencies" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.008"/>
+  <testcase name="testAssignmentsCut" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.001"/>
+  <testcase name="testExtraDependencies" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.006"/>
+  <testcase name="testTaskNamePattern" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.007"/>
+  <testcase name="testNestedTasksCopy" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.006"/>
+  <testcase name="testAssignmentsTruncated" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.003"/>
+  <testcase name="testTaskOrder" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.01"/>
+  <testcase name="testAssignmentsCopy" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.002"/>
+  <testcase name="testIntraDependencies" classname="net.sourceforge.ganttproject.chart.gantt.ClipboardTaskProcessorTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

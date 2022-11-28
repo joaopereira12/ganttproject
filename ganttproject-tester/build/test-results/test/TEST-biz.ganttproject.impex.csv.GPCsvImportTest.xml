@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="biz.ganttproject.impex.csv.GPCsvImportTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:06" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.22">
+  <properties/>
+  <testcase name="testOutlineNumberComparator" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.039"/>
+  <testcase name="testHierarchy" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.079"/>
+  <testcase name="testImportResourceRole" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.007"/>
+  <testcase name="testMilestone" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.015"/>
+  <testcase name="testImportResourcesColumn" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.007"/>
+  <testcase name="testTaskColors" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.014"/>
+  <testcase name="testImportAssignmentsColumn" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.009"/>
+  <testcase name="testCustomFields" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.004"/>
+  <testcase name="testEmptyDuration" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.003"/>
+  <testcase name="testDependencies" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.037"/>
+  <testcase name="testUseEndDateInsteadOfDuration" classname="biz.ganttproject.impex.csv.GPCsvImportTest" time="0.003"/>
+  <system-out><![CDATA[duration=1
+duration=1
+duration=1
+duration=1
+duration=1
+duration=1
+duration=0
+]]></system-out>
+  <system-err><![CDATA[Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t2
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t2
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+Nov 28, 2022 11:14:06 AM net.sourceforge.ganttproject.GPLogger logToLogger
+WARNING:  is not a number
+when parsing predecessor specification  of task t1
+]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.test.task.TestLocalCriticalPath" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:08" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.018">
+  <properties/>
+  <testcase name="testDependencyFromOutside" classname="net.sourceforge.ganttproject.test.task.TestLocalCriticalPath" time="0.004"/>
+  <testcase name="testDependencyOutside" classname="net.sourceforge.ganttproject.test.task.TestLocalCriticalPath" time="0.005"/>
+  <testcase name="testDeepNestedTask" classname="net.sourceforge.ganttproject.test.task.TestLocalCriticalPath" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

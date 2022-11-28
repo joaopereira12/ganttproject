@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.chart.TestTimelineLabelRendererImpl" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:09" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.038">
+  <properties/>
+  <testcase name="testNoLabelsForMereMortals" classname="net.sourceforge.ganttproject.chart.TestTimelineLabelRendererImpl" time="0.029"/>
+  <testcase name="testShortLabelsAreDisplayedFully" classname="net.sourceforge.ganttproject.chart.TestTimelineLabelRendererImpl" time="0.002"/>
+  <testcase name="testLongLabelsAreDisplayedTruncated" classname="net.sourceforge.ganttproject.chart.TestTimelineLabelRendererImpl" time="0.002"/>
+  <testcase name="testMilestoneLabels" classname="net.sourceforge.ganttproject.chart.TestTimelineLabelRendererImpl" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

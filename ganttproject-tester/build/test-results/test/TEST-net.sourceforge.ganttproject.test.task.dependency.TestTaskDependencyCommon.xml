@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:08" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.023">
+  <properties/>
+  <testcase name="testDependenciesAsDependantDoesntContainDependenciesAsDependee" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.004"/>
+  <testcase name="testImpossibleToAddDependencyTwice" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.001"/>
+  <testcase name="testDeletedDependencyDisappearsFromCollections" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.004"/>
+  <testcase name="testFindDependencyByTask" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.003"/>
+  <testcase name="testNewDependencyAppearsInCollections" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.002"/>
+  <testcase name="testDefaultHardness" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.002"/>
+  <testcase name="testOneDependencyDeletionDoesntAffectOthers" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.002"/>
+  <testcase name="testCreatingDependencyBetweenSuperAndSubTask" classname="net.sourceforge.ganttproject.test.task.dependency.TestTaskDependencyCommon" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

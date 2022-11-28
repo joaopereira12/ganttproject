@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="biz.ganttproject.impex.csv.GPCsvExportTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:05" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.328">
+  <properties/>
+  <testcase name="testResourceCustomFields" classname="biz.ganttproject.impex.csv.GPCsvExportTest" time="0.259"/>
+  <testcase name="testBomOption" classname="biz.ganttproject.impex.csv.GPCsvExportTest" time="0.029"/>
+  <testcase name="testTaskColor" classname="biz.ganttproject.impex.csv.GPCsvExportTest" time="0.018"/>
+  <testcase name="testTaskCustomFields" classname="biz.ganttproject.impex.csv.GPCsvExportTest" time="0.007"/>
+  <testcase name="testResourceAssignments" classname="biz.ganttproject.impex.csv.GPCsvExportTest" time="0.013"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

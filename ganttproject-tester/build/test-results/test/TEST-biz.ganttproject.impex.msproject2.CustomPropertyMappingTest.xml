@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="biz.ganttproject.impex.msproject2.CustomPropertyMappingTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:06" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.068">
+  <properties/>
+  <testcase name="testSequentialNumbers" classname="biz.ganttproject.impex.msproject2.CustomPropertyMappingTest" time="0.064"/>
+  <testcase name="testMsProjectType" classname="biz.ganttproject.impex.msproject2.CustomPropertyMappingTest" time="0.001"/>
+  <testcase name="testSimpleTypeMapping" classname="biz.ganttproject.impex.msproject2.CustomPropertyMappingTest" time="0.002"/>
+  <testcase name="testSpecialNames" classname="biz.ganttproject.impex.msproject2.CustomPropertyMappingTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

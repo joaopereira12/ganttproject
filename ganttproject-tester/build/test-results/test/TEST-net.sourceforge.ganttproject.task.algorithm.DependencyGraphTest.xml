@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2022-11-28T10:14:09" hostname="10-22-144-66.bib.eduroam.fct.unl.pt" time="0.047">
+  <properties/>
+  <testcase name="testSimpleSubtask" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.002"/>
+  <testcase name="testSimpleChain" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.003"/>
+  <testcase name="testRemoveSubtaskAndImplicitInheritedDependencies" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.005"/>
+  <testcase name="testRemoveDependencyWithPropagation" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.003"/>
+  <testcase name="testRemoveDependencyWithNoPropagation" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.004"/>
+  <testcase name="testDeepInheritedDependencies" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.004"/>
+  <testcase name="testIncomingFork" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.003"/>
+  <testcase name="testRemoveSubtaskRemovesImplicitSubSuperTaskDependencies" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.003"/>
+  <testcase name="testChainOfSubtasks" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.002"/>
+  <testcase name="testRemoveNode" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.002"/>
+  <testcase name="testTransactionRollback" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.002"/>
+  <testcase name="testRemoveInheritedDependencies" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.002"/>
+  <testcase name="testRhombus" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.004"/>
+  <testcase name="testInheritedDependencies" classname="net.sourceforge.ganttproject.task.algorithm.DependencyGraphTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

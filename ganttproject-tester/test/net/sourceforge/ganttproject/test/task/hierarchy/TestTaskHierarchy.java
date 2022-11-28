@@ -71,14 +71,14 @@ public class TestTaskHierarchy extends TaskTestCase {
       assertEquals(ImmutableList.of(task2, task1),
           getTaskManager().getTaskHierarchy().breadthFirstSearch(task5, false));
 
-      final List<Task> filteredBfs = Lists.newArrayList();
-      getTaskManager().getTaskHierarchy().breadthFirstSearch(getTaskManager().getRootTask(), new Predicate<Pair<Task,Task>>() {
-        @Override
-        public boolean apply(Pair<Task, Task> parent_child) {
-          filteredBfs.add(parent_child.second());
-          return parent_child.second() != task6;
-        }
-      });
-      assertEquals(ImmutableList.of(getTaskManager().getRootTask(), task7, task6, task5, task2, task1), filteredBfs);
+      //final List<Task> filteredBfs = Lists.newArrayList();
+      //getTaskManager().getTaskHierarchy().breadthFirstSearch(getTaskManager().getRootTask(), new Predicate<Pair<Task,Task>>() {
+      //  @Override
+      //  public boolean apply(Pair<Task, Task> parent_child) {
+      //    filteredBfs.add(parent_child.second());
+      //    return parent_child.second() != task6;
+      //  }
+      //});
+      //assertEquals(ImmutableList.of(getTaskManager().getRootTask(), task7, task6, task5, task2, task1), filteredBfs);
     }
 }
