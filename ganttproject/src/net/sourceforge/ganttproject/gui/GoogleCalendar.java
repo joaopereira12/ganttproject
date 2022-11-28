@@ -44,8 +44,8 @@ public class GoogleCalendar {
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES =
-            Collections.singletonList(CalendarScopes.CALENDAR_READONLY);
-    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+            Collections.singletonList(CalendarScopes.CALENDAR);
+    private static final String CREDENTIALS_FILE_PATH = "C:/Users/Public/Documents/ganttproject/ganttproject/src/net/sourceforge/ganttproject/gui/client_secret.json";
 
     public GoogleCalendar() throws IOException, GeneralSecurityException {
         System.out.println("ALELUIA!");
@@ -83,8 +83,7 @@ public class GoogleCalendar {
     public static void listEvents() throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        Calendar service =
-                new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+        Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                         .setApplicationName(APPLICATION_NAME)
                         .build();
 

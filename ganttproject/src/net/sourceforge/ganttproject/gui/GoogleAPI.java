@@ -14,10 +14,8 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
+import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
@@ -43,7 +41,7 @@ public class GoogleAPI {
      */
     private static final List<String> SCOPES =
             Collections.singletonList(DriveScopes.DRIVE);
-    private static final String CREDENTIALS_FILE_PATH = "client_secret.json";
+    private static final String CREDENTIALS_FILE_PATH = "../ganttproject/src/net/sourceforge/ganttproject/gui/client_secret.json";
 
     /**
      * Creates an authorized Credential object.
@@ -55,13 +53,27 @@ public class GoogleAPI {
 
     public GoogleAPI() throws IOException, GeneralSecurityException {
         System.out.println("ALELUIA!");
+        //System.out.println(CREDENTIALS_FILE_PATH);
+        NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+
+        // Build a new authorized API client service.
+        Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+
+
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
+
+        String currentPath = new java.io.File(".").getCanonicalPath();
+        System.out.println(currentPath);
+
         // Load client secrets.
-        InputStream in = GoogleAPI.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+        final File initialFile = new File(currentPath + "/client_drive.json");
+        InputStream in = new DataInputStream(new FileInputStream(initialFile));
         if (in == null) {
-            throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
+            throw new FileNotFoundException("Resource not found: " + currentPath + "/client_drive.json");
         }
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
@@ -79,7 +91,7 @@ public class GoogleAPI {
     }
 
     public static void upload() throws IOException, GeneralSecurityException {
-       /* 
+       /*
         // Build a new authorized API client service.
         NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 

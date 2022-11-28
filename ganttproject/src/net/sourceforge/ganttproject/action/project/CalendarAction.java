@@ -42,6 +42,7 @@ class CalendarAction extends GPAction {
             return;
         }
         myMainFrame.listEvents();
+        //System.out.println("OLAAAAA");
 
 
     }
