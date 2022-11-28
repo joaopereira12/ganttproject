@@ -2,8 +2,14 @@ apply plugin: 'java'
 apply plugin: 'idea'
 
 dependencies {
-  compile fileTree(dir: 'lib', include: ['*.jar'])
-  //mavenDeps group: 'com.google.guava', name: 'guava', version: '19.0'
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+    mavenDeps group: 'com.google.guava', name: 'guava', version: '19.0'
+    mavenDeps group: 'com.google.api-client', name: 'google-api-client', version: '1.33.0'
+    mavenDeps group: 'com.google.oauth-client', name: 'google-oauth-client', version: '1.31.2'
+    mavenDeps group: 'com.google.apis', name: 'google-api-services-drive', version: 'v3-rev20211107-1.32.1'
+    mavenDeps group: 'com.google.http-client', name: 'google-http-client', version: '1.42.3'
+
+
 }
 
 sourceSets {
@@ -20,11 +26,11 @@ task copyPlugin(type: Copy) {
     into(new File(rootProject.pluginsDir, project.name))
     from(jar.outputs.getFiles().getFiles().flatten())
     from(fileTree(".")) {
-      include "plugin.xml"
-      include "lib/**.jar"
-      include "resources/**"
+        include "plugin.xml"
+        include "lib/**.jar"
+        include "resources/**"
     }
     doLast {
-      println "Copying $project.name to $rootProject.pluginsDir"
+        println "Copying $project.name to $rootProject.pluginsDir"
     }
 }

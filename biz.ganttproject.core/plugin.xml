@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin
-   id="biz.ganttproject.core"
-   name="GanttProject Core"
-   version="2.5.0"
-   provider-name="">
+        id="biz.ganttproject.core"
+        name="GanttProject Core"
+        version="2.5.0"
+        provider-name="">
 
    <runtime>
       <library name="biz.ganttproject.core.jar">
          <export name="*"/>
       </library>
-      <library name="lib/ganttproject-guava.jar">
+      <library name="lib/*">
          <export name="*"/>
       </library>
       <library name="resources/">
