@@ -42,7 +42,7 @@ public class GoogleAPI {
      */
     private static final List<String> SCOPES =
             Collections.singletonList(DriveScopes.DRIVE);
-    private static final String CREDENTIALS_FILE_PATH = "/client_drive.json";
+    private static final String CREDENTIALS_FILE_PATH = "../ganttproject/src/net/sourceforge/ganttproject/gui/client_secret.json";
 
     /**
      * Creates an authorized Credential object.
