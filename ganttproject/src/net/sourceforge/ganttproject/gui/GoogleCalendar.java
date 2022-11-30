@@ -16,10 +16,7 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
@@ -45,10 +42,10 @@ public class GoogleCalendar {
      */
     private static final List<String> SCOPES =
             Collections.singletonList(CalendarScopes.CALENDAR);
-    private static final String CREDENTIALS_FILE_PATH = "C:/Users/Public/Documents/ganttproject/ganttproject/src/net/sourceforge/ganttproject/gui/client_secret.json";
+    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     public GoogleCalendar() throws IOException, GeneralSecurityException {
-        System.out.println("ALELUIA!");
+
     }
 
     /**
@@ -60,10 +57,14 @@ public class GoogleCalendar {
      */
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
+
+        String currentPath = new java.io.File(".").getCanonicalPath();
+        System.out.println(currentPath);
         // Load client secrets.
-        InputStream in = GoogleCalendar.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+        final File initialFile = new File(currentPath + CREDENTIALS_FILE_PATH);
+        InputStream in = new DataInputStream(new FileInputStream(initialFile));
         if (in == null) {
-            throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
+            throw new FileNotFoundException(currentPath+ CREDENTIALS_FILE_PATH);
         }
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
@@ -84,8 +85,8 @@ public class GoogleCalendar {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                        .setApplicationName(APPLICATION_NAME)
-                        .build();
+                .setApplicationName(APPLICATION_NAME)
+                .build();
 
         // List the next 10 events from the primary calendar.
         DateTime now = new DateTime(System.currentTimeMillis());

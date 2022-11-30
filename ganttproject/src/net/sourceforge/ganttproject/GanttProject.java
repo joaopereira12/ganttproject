@@ -837,9 +837,9 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
 
   public void listEvents() {
-    try {
+
       getProjectUIFacade().listEvents(getProject());
-    }catch (Exception exception){}
+
 
   }
 

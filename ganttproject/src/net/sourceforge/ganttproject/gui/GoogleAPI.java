@@ -15,6 +15,7 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 
+
 import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
@@ -41,7 +42,7 @@ public class GoogleAPI {
      */
     private static final List<String> SCOPES =
             Collections.singletonList(DriveScopes.DRIVE);
-    private static final String CREDENTIALS_FILE_PATH = "../ganttproject/src/net/sourceforge/ganttproject/gui/client_secret.json";
+    private static final String CREDENTIALS_FILE_PATH = "/client_drive.json";
 
     /**
      * Creates an authorized Credential object.
@@ -62,6 +63,10 @@ public class GoogleAPI {
                 .build();
 
 
+
+
+
+
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
@@ -70,10 +75,10 @@ public class GoogleAPI {
         System.out.println(currentPath);
 
         // Load client secrets.
-        final File initialFile = new File(currentPath + "/client_drive.json");
+        final File initialFile = new File(currentPath + CREDENTIALS_FILE_PATH);
         InputStream in = new DataInputStream(new FileInputStream(initialFile));
         if (in == null) {
-            throw new FileNotFoundException("Resource not found: " + currentPath + "/client_drive.json");
+            throw new FileNotFoundException("Resource not found: " + currentPath + CREDENTIALS_FILE_PATH);
         }
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
@@ -86,6 +91,7 @@ public class GoogleAPI {
                 .build();
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+        credential.refreshToken();
         //returns an authorized Credential object.
         return credential;
     }

@@ -27,7 +27,7 @@ class CalendarAction extends GPAction {
     private GanttProject myMainFrame;
 
     CalendarAction(GanttProject mainFrame) {
-        super("project.saveGoogle");
+        super("Google Calendar");
         myMainFrame = mainFrame;
     }
 
@@ -41,8 +41,12 @@ class CalendarAction extends GPAction {
         if (calledFromAppleScreenMenu(e)) {
             return;
         }
-        myMainFrame.listEvents();
-        //System.out.println("OLAAAAA");
+        try {
+            myMainFrame.listEvents();
+        } catch (Exception exception) {
+            System.out.println("Errou");
+        }
+        System.out.println("OLAAAAA");
 
 
     }

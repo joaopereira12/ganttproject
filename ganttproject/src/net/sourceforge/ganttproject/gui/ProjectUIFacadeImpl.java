@@ -209,8 +209,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
       GoogleCalendar calendar = new GoogleCalendar();
       System.out.println("Pleaseeeee");
       calendar.listEvents();
-      GoogleCalendarExtern calendar2 = new GoogleCalendarExtern();
-      calendar2.printCat();
+
     }catch (Exception e){}
   }
 
