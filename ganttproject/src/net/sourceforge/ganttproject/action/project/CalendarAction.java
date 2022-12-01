@@ -20,6 +20,8 @@ package net.sourceforge.ganttproject.action.project;
 
 import net.sourceforge.ganttproject.GanttProject;
 import net.sourceforge.ganttproject.action.GPAction;
+import net.sourceforge.ganttproject.task.Task;
+import net.sourceforge.ganttproject.task.TaskManager;
 
 import java.awt.event.ActionEvent;
 
@@ -43,6 +45,17 @@ class CalendarAction extends GPAction {
         }
         try {
             myMainFrame.listEvents();
+            /*TaskManager x = myMainFrame.getTaskManager();
+            Task[] y = x.getTasks();
+            for(Task a: y) {
+                System.out.println(a.getName());
+                System.out.println(a.getStart());
+                System.out.println(a.getEnd());
+
+
+            }*/
+
+
         } catch (Exception exception) {
             System.out.println("Errou");
         }

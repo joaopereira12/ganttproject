@@ -81,6 +81,7 @@ import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.task.TaskManager;
 import net.sourceforge.ganttproject.task.TaskManagerConfig;
 import net.sourceforge.ganttproject.task.TaskManagerImpl;
+import net.sourceforge.ganttproject.task.Task;
 
 import javax.annotation.Nullable;
 import javax.swing.*;
@@ -838,7 +839,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   public void listEvents() {
 
-      getProjectUIFacade().listEvents(getProject());
+      getProjectUIFacade().listEvents(getProject(), getTaskManager());
+
 
 
   }

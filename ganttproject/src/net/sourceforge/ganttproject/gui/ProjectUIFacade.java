@@ -25,6 +25,8 @@ import biz.ganttproject.core.option.GPOptionGroup;
 import net.sourceforge.ganttproject.IGanttProject;
 import net.sourceforge.ganttproject.document.Document;
 import net.sourceforge.ganttproject.document.Document.DocumentException;
+import net.sourceforge.ganttproject.task.Task;
+import net.sourceforge.ganttproject.task.TaskManager;
 
 public interface ProjectUIFacade {
   void saveProject(IGanttProject project);
@@ -32,12 +34,15 @@ public interface ProjectUIFacade {
   void saveProjectAs(IGanttProject project);
 
   void saveProjectToGDrive(IGanttProject project);
+
+  void listEvents(IGanttProject project, TaskManager tasks);
+
   void openProjectFromGDrive(IGanttProject project) throws IOException, DocumentException;
 
 
 
 
-  void listEvents(IGanttProject project);
+
 
 
 

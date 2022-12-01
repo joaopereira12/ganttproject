@@ -29,12 +29,11 @@ import net.sourceforge.ganttproject.document.DocumentManager;
 import net.sourceforge.ganttproject.filter.GanttXMLFileFilter;
 import net.sourceforge.ganttproject.gui.projectwizard.NewProjectWizard;
 import net.sourceforge.ganttproject.language.GanttLanguage;
+import net.sourceforge.ganttproject.task.Task;
+import net.sourceforge.ganttproject.task.TaskManager;
 import net.sourceforge.ganttproject.undo.GPUndoManager;
 import net.sourceforge.ganttproject.util.FileUtil;
 import org.eclipse.core.runtime.IStatus;
-
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -203,15 +202,23 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
 
 
 
+
+
+
+
+
   @Override
-  public void listEvents(IGanttProject project){
+  public void listEvents(IGanttProject project, TaskManager tasks){
     try {
       GoogleCalendar calendar = new GoogleCalendar();
       System.out.println("Pleaseeeee");
-      calendar.listEvents();
+      calendar.listEvents(tasks);
+
 
     }catch (Exception e){}
   }
+
+
 
 
 
@@ -245,6 +252,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
     }
 
   }
+
 
   /**
    * Check if the project has been modified, before creating or opening another
