@@ -97,13 +97,13 @@ public class GoogleCalendar {
                 .setLocation("800 Howard St., San Francisco, CA 94103")
                 .setDescription("A chance to hear more about Google's developer products.");
 
-        DateTime startDateTime = new DateTime(dateInit +"T09:00:00-07:00");
+        DateTime startDateTime = new DateTime(dateInit +"T00:00:00-00:00");
         EventDateTime start = new EventDateTime()
                 .setDateTime(startDateTime)
                 .setTimeZone("Europe/Lisbon");
         event.setStart(start);
 
-        DateTime endDateTime = new DateTime(dateEnd + "T17:00:00-07:00");
+        DateTime endDateTime = new DateTime(dateEnd + "T00:00:00-00:00");
         EventDateTime end = new EventDateTime()
                 .setDateTime(endDateTime)
                 .setTimeZone("Europe/Lisbon");
@@ -151,7 +151,7 @@ public class GoogleCalendar {
         // List the next 10 events from the primary calendar.
         DateTime now = new DateTime(System.currentTimeMillis());
         Events events = service.events().list("primary")
-                .setMaxResults(10)
+                .setMaxResults(100)
                 .setTimeMin(now)
                 .setOrderBy("startTime")
                 .setSingleEvents(true)
