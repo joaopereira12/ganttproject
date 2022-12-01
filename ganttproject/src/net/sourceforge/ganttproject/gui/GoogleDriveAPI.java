@@ -14,9 +14,14 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-
-
-import java.io.*;
+import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.ParentReference;
+import com.google.api.services.drive.model.FileList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
@@ -62,6 +67,9 @@ public class GoogleDriveAPI {
                 .setApplicationName(APPLICATION_NAME)
                 .build();
 
+        //upload(service);
+        //uploadBasic(service);
+        insertFile(service, "DRIVE", "cenas", null, "image/jpg", "C:/Users/nbadr/Downloads/messi.jpg");
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
@@ -70,8 +78,8 @@ public class GoogleDriveAPI {
         System.out.println(currentPath);
 
         // Load client secrets.
-        final File initialFile = new File(currentPath + CREDENTIALS_FILE_PATH);
-        InputStream in = new DataInputStream(new FileInputStream(initialFile));
+        final java.io.File initialFile = new java.io.File(currentPath + CREDENTIALS_FILE_PATH);
+        InputStream in = new java.io.DataInputStream(new java.io.FileInputStream(initialFile));
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + currentPath + CREDENTIALS_FILE_PATH);
         }
@@ -91,51 +99,33 @@ public class GoogleDriveAPI {
         return credential;
     }
 
-    public static void upload() throws IOException, GeneralSecurityException {
-       /*
-        // Build a new authorized API client service.
-        NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+    private static File insertFile(Drive service, String title, String description,
+                                   String parentId, String mimeType, String filename) {
+        // File's metadata.
+        File body = new File();
+        body.setTitle(title);
+        body.setDescription(description);
+        body.setMimeType(mimeType);
 
-        // Build a new authorized API client service.
-        Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-
-        // Upload file photo.jpg on drive.
-        File fileMetadata = new File();
-        fileMetadata.setName("test.rpm");
-        // File's content.
-        java.io.File filePath = new java.io.File("/home/duartecruz/Downloads/VirtualBox-7.0-7.0.2_154219_fedora36-1.x86_64.rpm");
-        // Specify media type and file-path for file.
-        FileContent mediaContent = new FileContent("application/x-rpm", filePath);
-        try {
-            File file = service.files().create(fileMetadata, mediaContent)
-                    .setFields("id")
-                    .execute();
-            System.out.println("File ID: " + file.getId());
-        } catch (GoogleJsonResponseException e) {
-            // TODO(developer) - handle error appropriately
-            System.err.println("Unable to upload file: " + e.getDetails());
-            throw e;
-        }*/
-        /*
-        Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-
-        // Print the names and IDs for up to 10 files.
-
-        FileList result = service.files().list()
-                .setPageSize(10)
-                .setFields("nextPageToken, files(id, name)")
-                .execute();
-        List<File> files = result.getFiles();
-        if (files == null || files.isEmpty()) {
-            System.out.println("No files found.");
-        } else {
-            System.out.println("Files:");
-            for (File file : files) {
-                System.out.printf("%s (%s)\n", file.getName(), file.getId());
-            }*/
+        // Set the parent folder.
+        if (parentId != null && parentId.length() > 0) {
+            body.setParents(
+                    Arrays.asList(new ParentReference().setId(parentId)));
         }
+
+        // File's content.
+        java.io.File fileContent = new java.io.File(filename);
+        FileContent mediaContent = new FileContent(mimeType, fileContent);
+        try {
+            File file = service.files().insert(body, mediaContent).execute();
+
+            // Uncomment the following line to print the File ID.
+            // System.out.println("File ID: " + file.getId());
+
+            return file;
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e);
+            return null;
+        }
+    }
 }
