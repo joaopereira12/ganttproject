@@ -22,10 +22,7 @@ import java.io.*;
 import java.security.GeneralSecurityException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /* class to demonstarte use of Calendar events list API */
 public class GoogleCalendar {
@@ -42,6 +39,8 @@ public class GoogleCalendar {
      */
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
+    private static HashMap<String,Task> tasksById;
+
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
@@ -51,7 +50,7 @@ public class GoogleCalendar {
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     public GoogleCalendar() throws IOException, GeneralSecurityException {
-
+        tasksById = new HashMap<>();
     }
 
     /**
@@ -124,6 +123,8 @@ public class GoogleCalendar {
 
         String calendarId = "primary";
         event = service.events().insert(calendarId, event).execute();
+        tasksById.put(event.getId(), task);
+        System.out.println(tasksById);
         System.out.printf("Event created: %s\n", event.getHtmlLink());
     }
 
@@ -161,11 +162,9 @@ public class GoogleCalendar {
         } else {
             System.out.println("Upcoming events");
             for (Event event : items) {
-                DateTime start = event.getStart().getDateTime();
-                if (start == null) {
-                    start = event.getStart().getDate();
-                }
-                System.out.printf("%s (%s)\n", event.getSummary(), start);
+              if(!tasksById.containsKey(event.getId())) {
+                  service.events().delete("primary", event.getId()).execute();
+              }
             }
         }
 
