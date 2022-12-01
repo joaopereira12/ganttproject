@@ -14,9 +14,12 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-
-
-import java.io.*;
+import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.FileList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
@@ -62,6 +65,8 @@ public class GoogleDriveAPI {
                 .setApplicationName(APPLICATION_NAME)
                 .build();
 
+        //upload(service);
+        uploadBasic(service);
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
@@ -70,8 +75,8 @@ public class GoogleDriveAPI {
         System.out.println(currentPath);
 
         // Load client secrets.
-        final File initialFile = new File(currentPath + CREDENTIALS_FILE_PATH);
-        InputStream in = new DataInputStream(new FileInputStream(initialFile));
+        final java.io.File initialFile = new java.io.File(currentPath + CREDENTIALS_FILE_PATH);
+        InputStream in = new java.io.DataInputStream(new java.io.FileInputStream(initialFile));
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + currentPath + CREDENTIALS_FILE_PATH);
         }
@@ -91,7 +96,7 @@ public class GoogleDriveAPI {
         return credential;
     }
 
-    public static void upload() throws IOException, GeneralSecurityException {
+    public static void upload(Drive service) throws IOException, GeneralSecurityException {
        /*
         // Build a new authorized API client service.
         NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -100,14 +105,15 @@ public class GoogleDriveAPI {
         Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
-
+    */
+        /*
         // Upload file photo.jpg on drive.
         File fileMetadata = new File();
-        fileMetadata.setName("test.rpm");
+        fileMetadata.setName("Casamentos.txt");
         // File's content.
-        java.io.File filePath = new java.io.File("/home/duartecruz/Downloads/VirtualBox-7.0-7.0.2_154219_fedora36-1.x86_64.rpm");
+        java.io.File filePath = new java.io.File("C:/Users/bruno/Documents/CLINGO/Casamentos.txt");
         // Specify media type and file-path for file.
-        FileContent mediaContent = new FileContent("application/x-rpm", filePath);
+        FileContent mediaContent = new FileContent("text/plain", filePath);
         try {
             File file = service.files().create(fileMetadata, mediaContent)
                     .setFields("id")
@@ -122,9 +128,9 @@ public class GoogleDriveAPI {
         Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
-
+        */
         // Print the names and IDs for up to 10 files.
-
+    /*
         FileList result = service.files().list()
                 .setPageSize(10)
                 .setFields("nextPageToken, files(id, name)")
@@ -136,6 +142,28 @@ public class GoogleDriveAPI {
             System.out.println("Files:");
             for (File file : files) {
                 System.out.printf("%s (%s)\n", file.getName(), file.getId());
-            }*/
+            }
+        }*/
+    }
+
+    public static String uploadBasic(Drive service) throws IOException {
+        // Upload file photo.jpg on drive.
+        File fileMetadata = new File();
+        fileMetadata.setName("Casamentos.txt");
+        // File's content.
+        java.io.File filePath = new java.io.File("C:/Users/bruno/Documents/CLINGO/Casamentos.txt");
+        // Specify media type and file-path for file.
+        FileContent mediaContent = new FileContent("text/plain", filePath);
+        try {
+            File file = service.files().create(fileMetadata, mediaContent)
+                    .setFields("id")
+                    .execute();
+            System.out.println("File ID: " + file.getId());
+            return file.getId();
+        } catch (GoogleJsonResponseException e) {
+            // TODO(developer) - handle error appropriately
+            System.err.println("Unable to upload file: " + e.getDetails());
+            throw e;
         }
+    }
 }
