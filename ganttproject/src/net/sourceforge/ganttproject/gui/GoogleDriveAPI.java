@@ -15,9 +15,11 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.ParentReference;
 import com.google.api.services.drive.model.FileList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
@@ -66,7 +68,8 @@ public class GoogleDriveAPI {
                 .build();
 
         //upload(service);
-        uploadBasic(service);
+        //uploadBasic(service);
+        insertFile(service, "DRIVE", "cenas", null, "text/plain", "C:/Users/bruno/Documents/CLINGO/Casamentos.txt");
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
@@ -145,6 +148,7 @@ public class GoogleDriveAPI {
             }
         }*/
     }
+    /*
 
     public static String uploadBasic(Drive service) throws IOException {
         // Upload file photo.jpg on drive.
@@ -164,6 +168,36 @@ public class GoogleDriveAPI {
             // TODO(developer) - handle error appropriately
             System.err.println("Unable to upload file: " + e.getDetails());
             throw e;
+        }
+    }*/
+
+    private static File insertFile(Drive service, String title, String description,
+                                   String parentId, String mimeType, String filename) {
+        // File's metadata.
+        File body = new File();
+        body.setTitle(title);
+        body.setDescription(description);
+        body.setMimeType(mimeType);
+
+        // Set the parent folder.
+        if (parentId != null && parentId.length() > 0) {
+            body.setParents(
+                    Arrays.asList(new ParentReference().setId(parentId)));
+        }
+
+        // File's content.
+        java.io.File fileContent = new java.io.File(filename);
+        FileContent mediaContent = new FileContent(mimeType, fileContent);
+        try {
+            File file = service.files().insert(body, mediaContent).execute();
+
+            // Uncomment the following line to print the File ID.
+            // System.out.println("File ID: " + file.getId());
+
+            return file;
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e);
+            return null;
         }
     }
 }
