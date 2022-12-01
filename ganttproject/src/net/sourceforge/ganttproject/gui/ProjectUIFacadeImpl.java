@@ -192,7 +192,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
   @Override
   public void saveProjectToGDrive(IGanttProject project) {
     try {
-      GoogleAPI google = new GoogleAPI();
+      GoogleDriveAPI google = new GoogleDriveAPI();
     }catch (Exception e){}
 
   }

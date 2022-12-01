@@ -34,7 +34,7 @@ public class GoogleCalendar {
     /**
      * Directory to store authorization tokens for this application.
      */
-    private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    private static final String TOKENS_DIRECTORY_PATH = "tokensCalendar";
 
     /**
      * Global instance of the scopes required by this quickstart.
