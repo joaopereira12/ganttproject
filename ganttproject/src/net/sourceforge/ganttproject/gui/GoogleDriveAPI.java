@@ -49,6 +49,8 @@ public class GoogleDriveAPI {
             Collections.singletonList(DriveScopes.DRIVE);
     private static final String CREDENTIALS_FILE_PATH = "/client_drive.json";
 
+    private static Drive service;
+
     /**
      * Creates an authorized Credential object.
      *
@@ -63,13 +65,9 @@ public class GoogleDriveAPI {
         NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 
         // Build a new authorized API client service.
-        Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+        service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
-
-        //upload(service);
-        //uploadBasic(service);
-        insertFile(service, "DRIVE", "cenas", null, "image/jpg", "C:/Users/nbadr/Downloads/messi.jpg");
     }
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
@@ -99,7 +97,7 @@ public class GoogleDriveAPI {
         return credential;
     }
 
-    private static File insertFile(Drive service, String title, String description,
+    public static File insertFile(String title, String description,
                                    String parentId, String mimeType, String filename) {
         // File's metadata.
         File body = new File();

@@ -37,6 +37,8 @@ import net.sourceforge.ganttproject.gui.UIFacade;
 import net.sourceforge.ganttproject.gui.projectwizard.WizardImpl;
 import net.sourceforge.ganttproject.plugins.PluginManager;
 
+import net.sourceforge.ganttproject.gui.*;
+
 /**
  * @author bard
  */
@@ -86,6 +88,8 @@ public class ExportFileWizardImpl extends WizardImpl {
         try {
           ExportFinalizationJob finalizationJob = new ExportFinalizationJobImpl();
           if ("file".equals(myState.getUrl().getProtocol())) {
+            //GoogleDriveAPI g = new GoogleDriveAPI();
+            //g.insertFile("Gantt", "Gantt from GanttProject", null, "image/jpg", myState.getUrl().toString());
             myState.getExporter().run(new File(myState.getUrl().toURI()), finalizationJob);
           }
         } catch (Exception e) {

@@ -46,6 +46,8 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+import java.security.GeneralSecurityException;
+
 
 public class ProjectUIFacadeImpl implements ProjectUIFacade {
   final UIFacade myWorkbenchFacade;
@@ -224,7 +226,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
 
 
   @Override
-  public void openProjectFromGDrive(final IGanttProject project) throws IOException, DocumentException {
+  public void openProjectFromGDrive(final IGanttProject project) throws IOException, DocumentException, GeneralSecurityException {
     if (false == ensureProjectSaved(project)) {
       return;
     }
@@ -242,6 +244,8 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
     if (returnVal == JFileChooser.APPROVE_OPTION) {
       Document document = getDocumentManager().getDocument(fc.getSelectedFile().getAbsolutePath());
       openProject(document, project);
+      GoogleDriveAPI g = new GoogleDriveAPI();
+      g.insertFile("Gantt", "Gantt from GanttProject", null, null, fc.getSelectedFile().getAbsolutePath());
     }
 
   }
