@@ -22,7 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static org.testng.Assert.assertEquals;
+
 
 /* Class to represent the  use of Google Calendar API with Events
 *  This class was tested using assertions, in case of fail the GanttProject shows a log with the error */
