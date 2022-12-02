@@ -202,7 +202,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
 
 
   @Override
-  public void saveProjectToGDrive(final IGanttProject project) throws IOException, DocumentException, GeneralSecurityException {
+  public void saveProjectToGDrive(final IGanttProject project) throws IOException, GeneralSecurityException{
     if (project.getDocument() == null) {
       saveProjectAs(project);
     }
