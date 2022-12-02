@@ -823,12 +823,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
   }
 
   public void saveProjectToGDrive() {
-    getProjectUIFacade().saveProjectToGDrive(getProject());
-  }
-
-  public void openProjectFromGDrive() {
     try {
-      getProjectUIFacade().openProjectFromGDrive(getProject());
+      getProjectUIFacade().saveProjectToGDrive(getProject());
     }catch (Exception exception){}
 
   }

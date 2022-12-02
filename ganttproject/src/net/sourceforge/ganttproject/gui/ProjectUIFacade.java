@@ -32,20 +32,9 @@ public interface ProjectUIFacade {
 
   void saveProjectAs(IGanttProject project);
 
-  void saveProjectToGDrive(IGanttProject project);
-  void openProjectFromGDrive(IGanttProject project) throws IOException, DocumentException, GeneralSecurityException;
-
-
-
+  void saveProjectToGDrive(IGanttProject project) throws IOException, DocumentException, GeneralSecurityException;
 
   void listEvents(IGanttProject project);
-
-
-
-
-
-
-
 
   public boolean ensureProjectSaved(IGanttProject project);
 

@@ -27,13 +27,13 @@ class SaveProjectToGDriveAction extends GPAction {
     private GanttProject myMainFrame;
 
     SaveProjectToGDriveAction(GanttProject mainFrame) {
-        super("project.saveGoogle");
+        super("Upload to Google Drive");
         myMainFrame = mainFrame;
     }
 
     @Override
     protected String getIconFilePrefix() {
-        return "send_mail_";
+        return "web_";
     }
 
     @Override

@@ -43,13 +43,12 @@ public class ProjectMenu extends JMenu {
     ProjectPropertiesAction projectSettingsAction = new ProjectPropertiesAction(project);
     myOpenProjectAction = new OpenProjectAction(project.getProject(), project.getProjectUIFacade());
     SaveProjectAsAction saveProjectAsAction = new SaveProjectAsAction(project);
-    SaveProjectToGDriveAction saveProjectToGDriveAction = new SaveProjectToGDriveAction(project);
 
 
     CalendarAction calendarAction = new CalendarAction(project);
 
 
-    OpenProjectFromGDriveAction openProjectFromGDriveAction = new OpenProjectFromGDriveAction(project);
+    SaveProjectToGDriveAction saveProjectToGDriveAction = new SaveProjectToGDriveAction(project);
     OpenURLAction openURLAction = new OpenURLAction(project.getProject(), project.getUIFacade(),
         project.getProjectUIFacade());
     SaveURLAction saveURLAction = new SaveURLAction(project.getProject(), project.getUIFacade(),
@@ -71,7 +70,6 @@ public class ProjectMenu extends JMenu {
 
     addSeparator();
     add(saveProjectToGDriveAction);
-    add(openProjectFromGDriveAction);
 
 
     add(calendarAction);

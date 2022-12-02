@@ -191,19 +191,6 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
     }
   }
 
-  @Override
-  public void saveProjectToGDrive(IGanttProject project) {
-    try {
-      GoogleDriveAPI google = new GoogleDriveAPI();
-    }catch (Exception e){}
-
-  }
-
-
-
-
-
-
 
   @Override
   public void listEvents(IGanttProject project){
@@ -216,17 +203,11 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
   }
 
 
-
-
-
-
-
-
-
-
-
   @Override
-  public void openProjectFromGDrive(final IGanttProject project) throws IOException, DocumentException, GeneralSecurityException {
+  public void saveProjectToGDrive(final IGanttProject project) throws IOException, DocumentException, GeneralSecurityException {
+    if (project.getDocument() == null) {
+      saveProjectAs(project);
+    }
     if (false == ensureProjectSaved(project)) {
       return;
     }
@@ -243,9 +224,9 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
     int returnVal = fc.showOpenDialog(myWorkbenchFacade.getMainFrame());
     if (returnVal == JFileChooser.APPROVE_OPTION) {
       Document document = getDocumentManager().getDocument(fc.getSelectedFile().getAbsolutePath());
-      openProject(document, project);
+      //openProject(document, project);
       GoogleDriveAPI g = new GoogleDriveAPI();
-      g.insertFile("Gantt", "Gantt from GanttProject", null, null, fc.getSelectedFile().getAbsolutePath());
+      g.insertFile(fc.getSelectedFile().getName(), "Gantt from GanttProject", null, null, fc.getSelectedFile().getAbsolutePath());
     }
 
   }
