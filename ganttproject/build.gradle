@@ -5,7 +5,10 @@ ext {
 }
 
 dependencies {
-  compile fileTree(dir: project.ext.libDir, include: ['*.jar'])
+  implementation 'org.testng:testng:7.1.0'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'org.testng:testng:7.1.0'
+    compile fileTree(dir: project.ext.libDir, include: ['*.jar'])
   compile project(':..:biz.ganttproject.core')
   compile files('data/resources')
 //  mavenDeps group: 'org.controlsfx', name: 'controlsfx', version: '8.40.11'

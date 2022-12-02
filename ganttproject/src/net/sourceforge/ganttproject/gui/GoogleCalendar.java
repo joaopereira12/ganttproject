@@ -16,15 +16,16 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.*;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskManager;
-import net.sourceforge.ganttproject.task.TaskManagerImpl;
-
 import java.io.*;
 import java.security.GeneralSecurityException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/* class to demonstarte use of Calendar events list API */
+import static org.testng.Assert.assertEquals;
+
+/* Class to represent the  use of Google Calendar API with Events
+*  This class was tested using assertions, in case of fail the GanttProject shows a log with the error */
 public class GoogleCalendar {
     /**
      * Application name.
@@ -38,9 +39,11 @@ public class GoogleCalendar {
      * Directory to store authorization tokens for this application.
      */
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
-
-    private static HashMap<String,Task> tasksById;
-
+    /**
+     * Map to store the tasks created in the GanttProject associated with their
+     * id in the Google Calendar
+     */
+    private static Map<String,Task> tasksByGoogleId;
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
@@ -49,8 +52,9 @@ public class GoogleCalendar {
             Collections.singletonList(CalendarScopes.CALENDAR);
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
-    public GoogleCalendar() throws IOException, GeneralSecurityException {
-        tasksById = new HashMap<>();
+
+    public GoogleCalendar() {
+        tasksByGoogleId = new HashMap<>();
     }
 
     /**
@@ -64,7 +68,6 @@ public class GoogleCalendar {
             throws IOException {
 
         String currentPath = new java.io.File(".").getCanonicalPath();
-        System.out.println(currentPath);
         // Load client secrets.
         final File initialFile = new File(currentPath + CREDENTIALS_FILE_PATH);
         InputStream in = new DataInputStream(new FileInputStream(initialFile));
@@ -86,16 +89,20 @@ public class GoogleCalendar {
         return credential;
     }
 
-    private static void addGoogleCalendar(Calendar service, Task task) throws IOException, GeneralSecurityException, ParseException {
-        // Build a new authorized API client service.
+    /**
+     * Creates a Google Calendar Event from a given GanttProject Task
+     * @param service - Google Calendar
+     * @param task - Task to be inserted in Google Calendar
+     * @throws IOException
+     * @throws ParseException
+     */
+    private static void addGoogleCalendar(Calendar service, Task task) throws IOException, ParseException {
         String name = task.getName();
         String dateInit = switchDateFormat(task.getStart().toString());
         String dateEnd = switchDateFormat(task.getEnd().toString());
 
         Event event = new Event()
-                .setSummary(name)
-                .setLocation("800 Howard St., San Francisco, CA 94103")
-                .setDescription("A chance to hear more about Google's developer products.");
+                .setSummary(name);
 
         DateTime startDateTime = new DateTime(dateInit +"T00:00:00-00:00");
         EventDateTime start = new EventDateTime()
@@ -109,8 +116,6 @@ public class GoogleCalendar {
                 .setTimeZone("Europe/Lisbon");
         event.setEnd(end);
 
-
-
         EventReminder[] reminderOverrides = new EventReminder[]{
                 new EventReminder().setMethod("email").setMinutes(24 * 60),
                 new EventReminder().setMethod("popup").setMinutes(10),
@@ -123,24 +128,34 @@ public class GoogleCalendar {
 
         String calendarId = "primary";
         event = service.events().insert(calendarId, event).execute();
-        tasksById.put(event.getId(), task);
-        System.out.println(tasksById);
+        tasksByGoogleId.put(event.getId(), task);
         System.out.printf("Event created: %s\n", event.getHtmlLink());
+
+        assert(tasksByGoogleId.containsKey(event.getId()) == true);
+        assert(service.events().get(calendarId, event.getId()).execute() != null);
     }
 
+    /**
+     * Switch date format in order to insert the event in the Google Calendar
+     * @param date - to switch format
+     * @return date with new format
+     * @throws ParseException
+     */
     private static String switchDateFormat(String date) throws ParseException {
-
         SimpleDateFormat date1=new SimpleDateFormat("dd-MM-yyyy");
         Date d = date1.parse(date);
         date1.applyPattern("yyyy-MM-dd");
 
         return date1.format(d);
-
-
-
     }
 
-
+    /**
+     * Puts all GanttProject tasks in Google Calendar Events
+     * @param taskManager - has access to the list with all GanttProject tasks
+     * @throws IOException
+     * @throws GeneralSecurityException
+     * @throws ParseException
+     */
     public static void listEvents(TaskManager taskManager) throws IOException, GeneralSecurityException, ParseException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -148,9 +163,10 @@ public class GoogleCalendar {
                 .setApplicationName(APPLICATION_NAME)
                 .build();
 
-        // List the next 10 events from the primary calendar.
+        // List the next 100 events from the primary calendar.
         DateTime now = new DateTime(System.currentTimeMillis());
-        Events events = service.events().list("primary")
+        String calendarId = "primary";
+        Events events = service.events().list(calendarId)
                 .setMaxResults(100)
                 .setTimeMin(now)
                 .setOrderBy("startTime")
@@ -162,17 +178,19 @@ public class GoogleCalendar {
         } else {
             System.out.println("Upcoming events");
             for (Event event : items) {
-              if(!tasksById.containsKey(event.getId())) {
-                  service.events().delete("primary", event.getId()).execute();
+                // if the task was deleted from GanttProject then its Google Calendar must also be deleted
+              if(!tasksByGoogleId.containsKey(event.getId())) {
+                  String eventId = event.getId();
+                  service.events().delete(calendarId, eventId).execute();
+
+                  assert(tasksByGoogleId.containsKey(eventId) == false);
               }
             }
         }
 
         Task[] currentTasks = taskManager.getTasks();
         for (Task task : currentTasks) {
-
             addGoogleCalendar(service,task);
-
         }
     }
 }

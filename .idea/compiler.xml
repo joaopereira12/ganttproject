@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.6" />
+    <bytecodeTargetLevel target="1.6">
+      <module name="ganttproject-builder....biz.ganttproject.core" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.core.main" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.core.test" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.impex.ical" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.impex.ical.main" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.impex.ical.test" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.impex.msproject2" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.impex.msproject2.main" target="1.8" />
+      <module name="ganttproject-builder....biz.ganttproject.impex.msproject2.test" target="1.8" />
+      <module name="ganttproject-builder....ganttproject" target="1.8" />
+      <module name="ganttproject-builder....ganttproject-tester" target="1.8" />
+      <module name="ganttproject-builder....ganttproject-tester.main" target="1.8" />
+      <module name="ganttproject-builder....ganttproject-tester.test" target="1.8" />
+      <module name="ganttproject-builder....ganttproject.main" target="1.8" />
+      <module name="ganttproject-builder....ganttproject.test" target="1.8" />
+      <module name="ganttproject-builder....main" target="1.8" />
+      <module name="ganttproject-builder....org.ganttproject.chart.pert" target="1.8" />
+      <module name="ganttproject-builder....org.ganttproject.chart.pert.main" target="1.8" />
+      <module name="ganttproject-builder....org.ganttproject.chart.pert.test" target="1.8" />
+      <module name="ganttproject-builder....org.ganttproject.impex.htmlpdf" target="1.8" />
+      <module name="ganttproject-builder....org.ganttproject.impex.htmlpdf.main" target="1.8" />
+      <module name="ganttproject-builder....org.ganttproject.impex.htmlpdf.test" target="1.8" />
+      <module name="ganttproject-builder....test" target="1.8" />
+      <module name="ganttproject-builder.main" target="1.8" />
+      <module name="ganttproject-builder.test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

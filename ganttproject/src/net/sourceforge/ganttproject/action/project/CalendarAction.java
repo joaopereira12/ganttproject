@@ -45,21 +45,10 @@ class CalendarAction extends GPAction {
         }
         try {
             myMainFrame.listEvents();
-            /*TaskManager x = myMainFrame.getTaskManager();
-            Task[] y = x.getTasks();
-            for(Task a: y) {
-                System.out.println(a.getName());
-                System.out.println(a.getStart());
-                System.out.println(a.getEnd());
-
-
-            }*/
-
-
         } catch (Exception exception) {
-            System.out.println("Errou");
+            System.out.println("Error");
         }
-        System.out.println("OLAAAAA");
+
 
 
     }

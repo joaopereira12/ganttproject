@@ -211,9 +211,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
   public void listEvents(IGanttProject project, TaskManager tasks){
     try {
       GoogleCalendar calendar = new GoogleCalendar();
-      System.out.println("Pleaseeeee");
       calendar.listEvents(tasks);
-
 
     }catch (Exception e){}
   }
