@@ -92,12 +92,15 @@ public abstract class WizardImpl {
         onOkPressed();
       }
     };
+
     myCancelAction = new CancelAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
         onCancelPressed();
       }
     };
+
+
   }
 
   public void nextPage() {

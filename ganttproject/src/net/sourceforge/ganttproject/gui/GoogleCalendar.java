@@ -38,7 +38,8 @@ public class GoogleCalendar {
     /**
      * Directory to store authorization tokens for this application.
      */
-    private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    private static final String TOKENS_DIRECTORY_PATH = "tokensCalendar";
+
     /**
      * Map to store the tasks created in the GanttProject associated with their
      * id in the Google Calendar

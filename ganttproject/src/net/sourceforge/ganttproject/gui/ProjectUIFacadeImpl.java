@@ -45,6 +45,8 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+import java.security.GeneralSecurityException;
+
 
 public class ProjectUIFacadeImpl implements ProjectUIFacade {
   final UIFacade myWorkbenchFacade;
@@ -188,24 +190,6 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
     }
   }
 
-  @Override
-  public void saveProjectToGDrive(IGanttProject project) {
-    try {
-      GoogleAPI google = new GoogleAPI();
-    }catch (Exception e){}
-
-  }
-
-
-
-
-
-
-
-
-
-
-
 
   @Override
   public void listEvents(IGanttProject project, TaskManager tasks){
@@ -217,19 +201,11 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
   @Override
-  public void openProjectFromGDrive(final IGanttProject project) throws IOException, DocumentException {
+  public void saveProjectToGDrive(final IGanttProject project) throws IOException, DocumentException, GeneralSecurityException {
+    if (project.getDocument() == null) {
+      saveProjectAs(project);
+    }
     if (false == ensureProjectSaved(project)) {
       return;
     }
@@ -246,7 +222,9 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
     int returnVal = fc.showOpenDialog(myWorkbenchFacade.getMainFrame());
     if (returnVal == JFileChooser.APPROVE_OPTION) {
       Document document = getDocumentManager().getDocument(fc.getSelectedFile().getAbsolutePath());
-      openProject(document, project);
+      //openProject(document, project);
+      GoogleDriveAPI g = new GoogleDriveAPI();
+      g.insertFile(fc.getSelectedFile().getName(), "Gantt from GanttProject", null, null, fc.getSelectedFile().getAbsolutePath());
     }
 
   }

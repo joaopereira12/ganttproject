@@ -19,6 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 package net.sourceforge.ganttproject.gui;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import biz.ganttproject.core.option.GPOptionGroup;
 
@@ -42,7 +43,7 @@ public interface ProjectUIFacade {
 
 
 
-
+  void listEvents(IGanttProject project);
 
 
 
