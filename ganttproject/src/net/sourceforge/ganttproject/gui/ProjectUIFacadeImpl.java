@@ -226,8 +226,13 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
       Document document = getDocumentManager().getDocument(fc.getSelectedFile().getAbsolutePath());
       //openProject(document, project);
       GoogleDriveAPI g = new GoogleDriveAPI();
-      g.insertFile(fc.getSelectedFile().getName(), "Gantt from GanttProject", null, null, fc.getSelectedFile().getAbsolutePath());
-      showMessageDialog(null, "The file has been uploaded to your Google Drive");
+      com.google.api.services.drive.model.File f = g.insertFile(fc.getSelectedFile().getName(), "Gantt from GanttProject", null, null, fc.getSelectedFile().getAbsolutePath());
+      if(f == null) {
+        showMessageDialog(null, "An error has ocurred!");
+      }
+      else {
+        showMessageDialog(null, "The file has been uploaded to your Google Drive");
+      }
     }
 
   }
