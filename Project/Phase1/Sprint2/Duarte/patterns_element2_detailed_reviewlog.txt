@@ -1,0 +1,1 @@
+This design pattern has been reviewed and approved by Ricardo Bessa.

@@ -1,4 +1,22 @@
 GanttProject
+
+Group:
+ - Bruno Melo:
+    - Number: 60019
+    - Git id: Reidasfestas
+ - Duarte Cruz:
+    - Number: 59765
+    - Git id: MagoPT
+ - Joao Pereira:
+    - Number: 60180
+    - Git id: joaopereira12 
+ - Neel Badracim:
+    - Number: 60492
+    - Git id: NeelDB 
+ - Ricardo Bessa:
+    - Number: 60485
+    - Git id: R-Bessa
+
 ============
 [![Build Status] (https://travis-ci.org/bardsoftware/ganttproject.svg?branch=master)](https://travis-ci.org/bardsoftware/ganttproject)
 

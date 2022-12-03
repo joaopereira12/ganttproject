@@ -1,0 +1,2 @@
+This code pattern has been aprooved and reviewd by Bruno Melo. No further
+changes required.

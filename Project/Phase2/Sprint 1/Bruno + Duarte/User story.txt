@@ -1,0 +1,1 @@
+Funcionalidade 1 - Como utilizador do Ganttproject gostaria de ter a possibilidade de dar upload dos meus Gantt charts diretamente para o Google Drive, para poder acessá-los a partir de qualquer dispositivo.
