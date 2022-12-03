@@ -1,0 +1,1 @@
+Funcionalidade 2 - Como utilizador do Ganttproject gostaria de poder ser notificado das datas de início e fim das tarefas, assim como da sua taxa de completude através do Google Calendar, de forma a manter-me informado do progresso do projeto e das tarefas que o constituem.

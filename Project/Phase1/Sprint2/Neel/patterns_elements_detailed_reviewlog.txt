@@ -1,0 +1,2 @@
+This code pattern has been reviewd and approved by Bruno Melo.
+The explanation is well done and easy to follow.

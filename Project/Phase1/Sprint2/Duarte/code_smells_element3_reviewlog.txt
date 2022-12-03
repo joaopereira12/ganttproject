@@ -1,0 +1,1 @@
+This code smell has been reviewed and approved by Ricardo Bessa.

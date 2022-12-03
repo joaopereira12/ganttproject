@@ -1,0 +1,3 @@
+This code smell has been reviewd and approved by Bruno Melo.
+The explanation is well done and easy to follow and the 
+image is a very good illustrative of the problem to be analysed.
