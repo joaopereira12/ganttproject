@@ -34,6 +34,7 @@ import net.sourceforge.ganttproject.task.TaskManager;
 import net.sourceforge.ganttproject.undo.GPUndoManager;
 import net.sourceforge.ganttproject.util.FileUtil;
 import org.eclipse.core.runtime.IStatus;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -196,6 +197,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
     try {
       GoogleCalendar calendar = new GoogleCalendar();
       calendar.listEvents(tasks);
+      showMessageDialog(null, "The tasks have been updated in your Google Calender");
 
     }catch (Exception e){}
   }
@@ -225,6 +227,7 @@ public class ProjectUIFacadeImpl implements ProjectUIFacade {
       //openProject(document, project);
       GoogleDriveAPI g = new GoogleDriveAPI();
       g.insertFile(fc.getSelectedFile().getName(), "Gantt from GanttProject", null, null, fc.getSelectedFile().getAbsolutePath());
+      showMessageDialog(null, "The file has been uploaded to your Google Drive");
     }
 
   }

@@ -15,8 +15,8 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.ParentReference;
 import com.google.api.services.drive.model.FileList;
+import com.google.api.services.drive.model.ParentReference;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,6 +25,10 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /* class to demonstarte use of Drive files list API */
 public class GoogleDriveAPI {
@@ -50,6 +54,8 @@ public class GoogleDriveAPI {
     private static final String CREDENTIALS_FILE_PATH = "/client_drive.json";
 
     private static Drive service;
+
+    private static Map filesInDrive = new HashMap<String, File>();
 
     /**
      * Creates an authorized Credential object.
@@ -116,7 +122,8 @@ public class GoogleDriveAPI {
         FileContent mediaContent = new FileContent(mimeType, fileContent);
         try {
             File file = service.files().insert(body, mediaContent).execute();
-
+            filesInDrive.put(file.getId(), file);
+            assert(filesInDrive.containsKey(file.getId()) == true);
             // Uncomment the following line to print the File ID.
             // System.out.println("File ID: " + file.getId());
 
