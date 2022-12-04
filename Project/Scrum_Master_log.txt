@@ -2,4 +2,4 @@
 [Phase 1][Sprint 2][João Pereira]
 [Phase 2][Sprint 1][Bruno Melo]
 [Phase 2][Sprint 2][Ricardo Bessa]
-[Phase 2][Sprint 1][Duarte Cruz]
+[Phase 2][Sprint 3][Duarte Cruz]
