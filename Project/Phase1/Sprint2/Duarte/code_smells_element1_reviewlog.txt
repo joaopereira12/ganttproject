@@ -1,0 +1,1 @@
+This code smell was reviewed and approved by Joao Pereira.
