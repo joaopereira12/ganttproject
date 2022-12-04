@@ -1,0 +1,1 @@
+This code smell has been reviewd and approved by Duarte Cruz.
